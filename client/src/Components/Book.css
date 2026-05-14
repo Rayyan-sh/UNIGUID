@@ -1,0 +1,54 @@
+.course-container {
+  padding: 25px;
+  background: linear-gradient(135deg, #f9fff9, #eefaf0);
+  min-height: 70vh;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.course-container h2 {
+  margin-bottom: 20px;
+  color: #2e2e2e;
+  font-size: 24px;
+}
+
+.course-container .books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.course-container .book-card {
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.course-container .book-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-container .book-card img {
+  width: 90px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.course-container .book-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.course-container .book-info p {
+  margin: 5px 0;
+  color: #666;
+}

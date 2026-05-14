@@ -1,0 +1,89 @@
+.register-page {
+  background: #f9fff9;
+  min-height: 70vh; 
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.register-wrapper {
+  width: 100%;
+  max-width: 2500px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.register-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.register-left form {
+  width: 100%;
+  max-width: 420px;
+}
+
+.register-left h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+}
+
+.register-left label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.register-left input {
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  margin-bottom: 10px;
+}
+
+.register-left input:focus {
+  box-shadow: none;
+  border-color: #2e7d32;
+}
+
+.register-left button {
+  background: #2e7d32;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.register-left button:hover {
+  background: #256428;
+}
+
+.register-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.register-right img {
+  width: 600px;
+  border-radius: 20px;
+}
+
+@media (max-width: 900px) {
+  .register-wrapper {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .register-left form {
+    max-width: 100%;
+  }
+
+  .register-right img {
+    width: 300px;
+  }
+}
