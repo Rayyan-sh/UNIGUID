@@ -40,8 +40,17 @@ mongoose.connection.once("open", async () => {
   console.log("COLLECTIONS:", collections.map(c => c.name));
 });
 
+/*It will work only on your computer
 app.listen(3001, () => {
   console.log("Server running on port 3001");
+});*/
+
+//Because when you deploy your backend on platforms like Render, 
+// the server does NOT use your local port (3001).
+//Instead, Render automatically assigns a dynamic port using:
+
+app.listen(process.env.PORT || 3001, () => {
+  console.log(`Server running on port ${process.env.PORT || 3001}`);
 });
 
 

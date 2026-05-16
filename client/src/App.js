@@ -15,7 +15,6 @@ import Profile from './Components/Profile';
 import p1 from "./Images/p1.jpg";
 
 function App() {
-    console.log("SERVER_URL:", SERVER_URL);
   return (
       <div className="App">
 
