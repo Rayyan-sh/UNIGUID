@@ -1,3 +1,4 @@
+import * as ENV from "../config"; //Environment Variables
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -15,12 +16,19 @@ export const registerUser = createAsyncThunk(
   "users/registerUser",
   async (userData) => {
     try {
-      const response = await axios.post("http://localhost:3001/registerUser", {
+      /*const response = await axios.post("http://localhost:3001/registerUser", {
         name: userData.name,
         email: userData.email,
         password: userData.password,
         gender: userData.gender,
-      });
+      });*/
+
+    const response = await axios.post(`${ENV.SERVER_URL}/registerUser`, {
+  name: userData.name,
+  email: userData.email,
+  password: userData.password,
+  gender: userData.gender,
+});
 
       console.log(response);
 
@@ -35,10 +43,15 @@ export const registerUser = createAsyncThunk(
 
 export const login = createAsyncThunk("users/login", async (userData) => {
   try {
-    const response = await axios.post("http://localhost:3001/login", {
+    /*const response = await axios.post("http://localhost:3001/login", {
       email: userData.email,
       password: userData.password,
-    });
+    });*/
+
+    const response = await axios.post(`${ENV.SERVER_URL}/login`, {
+  email: userData.email,
+  password: userData.password,
+});
 
     const user = response.data.user;
     console.log(response);
@@ -55,7 +68,7 @@ export const updateUserProfile = createAsyncThunk(
   "user/updateUserProfile",
   async (userData) => {
     try {
-      const response = await axios.put(
+      /*const response = await axios.put(
         `http://localhost:3001/updateUserProfile/${userData.email}`,
         {
           email: userData.email,
@@ -64,8 +77,18 @@ export const updateUserProfile = createAsyncThunk(
           profilePic: userData.profilePic,
           gender: userData.gender,
         }
-      );
+      );*/
 
+const response = await axios.put(
+  `${ENV.SERVER_URL}/updateUserProfile/${userData.email}`,
+  {
+    email: userData.email,
+    name: userData.name,
+    password: userData.password,
+    profilePic: userData.profilePic,
+    gender: userData.gender,
+  }
+);
       const user = response.data.user;
       return user;
     } catch (error) {

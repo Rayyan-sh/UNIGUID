@@ -6,20 +6,29 @@ import UserModel from "./Models/UserModel.js";
 import CourseModel from "./Models/CourseModel.js";
 import BookModel from "./Models/BookModel.js";
 import CommentModel from "./Models/CommentModel.js";
+import * as ENV from "./config.js"; //Environment Variables
 
 
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}));
 
 // DB CONNECTION 
-const connectString =
-  "mongodb+srv://76s2129_db_user:76s2129@cluster0.1p7xxwj.mongodb.net/?appName=Cluster0";
-
+//const connectString =
+  //"mongodb+srv://76s2129_db_user:76s2129@cluster0.1p7xxwj.mongodb.net/?appName=Cluster0";
+  // using Environment Variables
+const connectString = `mongodb+srv://${ENV.DB_USER}:${ENV.DB_PASSWORD}@${ENV.DB_CLUSTER}/${ENV.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
 mongoose.connect(connectString).then(() => {
   console.log("MongoDB Connected");
   console.log("DB NAME:", mongoose.connection.name);
+  // for testing
+  console.log("DB_USER:", ENV.DB_USER);
+console.log("DB_PASSWORD:", ENV.DB_PASSWORD);
+  
 });
 
 // to find collection from DB

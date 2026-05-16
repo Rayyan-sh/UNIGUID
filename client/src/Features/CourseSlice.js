@@ -1,3 +1,4 @@
+import * as ENV from "../config"; //Environment Variables
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -11,7 +12,8 @@ export const getCourses = createAsyncThunk(
   "courses/getCourses",
   async () => {
     try {
-      const res = await axios.get("http://localhost:3001/courses");
+      //const res = await axios.get("http://localhost:3001/courses");
+      const res = await axios.get(`${ENV.SERVER_URL}/courses`);
       return res.data; 
     } catch (error) {
       throw error;

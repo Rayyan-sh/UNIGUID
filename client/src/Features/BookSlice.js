@@ -1,3 +1,4 @@
+import * as ENV from "../config"; //Environment Variables
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -13,9 +14,10 @@ export const getBooksByCourse = createAsyncThunk(
   "books/getBooksByCourse",
   async (courseId, { rejectWithValue }) => {
     try {
+      //const res = await axios.get(`http://localhost:3001/books/course/${courseId}`);
       const res = await axios.get(
-        `http://localhost:3001/books/course/${courseId}`
-      );
+  `${ENV.SERVER_URL}/books/course/${courseId}`
+);
       return res.data.books;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
@@ -25,10 +27,8 @@ export const getBooksByCourse = createAsyncThunk(
 export const getBookById = createAsyncThunk(
   "books/getBookById",
   async (bookId) => {
-    const res = await axios.get(
-      `http://localhost:3001/books/${bookId}`
-    );
-
+    //const res = await axios.get(`http://localhost:3001/books/${bookId}`);
+const res = await axios.get(`${ENV.SERVER_URL}/books/${bookId}`);
     return res.data.book || res.data;
   }
 );
